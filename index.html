@@ -918,6 +918,62 @@ Zee, Imli, Zebra(yep lil one). 🖤
 
 </section>
 
+
+<!-- INBOX SECTION -->
+<section id="inbox">
+  <div class="container">
+    <div class="section-label">Send a Message</div>
+    <h2>Leave a note.</h2>
+    <div class="card" style="max-width: 600px; margin: auto;">
+      <textarea id="userMessage" placeholder="Write something..." style="width: 100%; height: 120px; background: rgba(255,255,255,0.035); color: #fff; border: 1px solid var(--border); border-radius: 15px; padding: 15px; font-family: inherit; resize: none; outline: none;"></textarea>
+      <button onclick="sendMessage()" style="margin-top: 15px; border: 1px solid var(--border); background: white; color: black; padding: 12px 25px; border-radius: 30px; font-weight: 700;">Send Note</button>
+      <p id="sendStatus" style="margin-top: 10px; font-size: 13px;"></p>
+    </div>
+  </div>
+</section>
+
+<!-- FIREBASE SCRIPT -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCJ-i7gv_H-Mtzyh-rzgx6vtH4y7oKwibY",
+    authDomain: "zee-idk.firebaseapp.com",
+    projectId: "zee-idk",
+    storageBucket: "zee-idk.firebasestorage.app",
+    messagingSenderId: "263314225008",
+    appId: "1:263314225008:web:cd04f787e9be771cd341b5",
+    measurementId: "G-E22YC9SYJQ",
+    databaseURL: "https://zee-idk-default-rtdb.firebaseio.com" // Update if your DB URL is different in console
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  window.sendMessage = function() {
+    const messageInput = document.getElementById("userMessage");
+    const status = document.getElementById("sendStatus");
+    const text = messageInput.value.trim();
+
+    if (!text) {
+      status.innerText = "Please write a message first!";
+      return;
+    }
+
+    push(ref(database, 'messages'), {
+      message: text,
+      timestamp: new Date().toISOString()
+    }).then(() => {
+      status.innerText = "Sent! 🤍";
+      messageInput.value = "";
+    }).catch((error) => {
+      status.innerText = "Failed to send. Check DB rules.";
+      console.error(error);
+    });
+  };
+</script>
+
 <footer>
 Made BY Abdullah for someone special · Zee edition
 </footer>
