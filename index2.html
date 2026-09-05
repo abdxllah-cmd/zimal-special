@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zee — A Little World of Zimal</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{
+    --bg:#070707;
+    --card:rgba(255,255,255,.055);
+    --card2:rgba(255,255,255,.085);
+    --text:#f5f5f5;
+    --muted:#9b9b9b;
+    --accent:#ffffff;
+    --border:rgba(255,255,255,.11);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+/* ---------- BACKGROUND ---------- */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,255,255,.055),transparent 25%),
+        radial-gradient(circle at 80% 70%,rgba(255,255,255,.035),transparent 25%);
+    z-index:-2;
+}
+
+#particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.particle{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    opacity:.25;
+    animation:float 8s infinite ease-in-out;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);opacity:.15}
+    50%{transform:translateY(-35px);opacity:.5}
+}
+
+/* ---------- NAV ---------- */
+
+nav{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(92%,800px);
+    padding:10px;
+    border:1px solid var(--border);
+    background:rgba(10,10,10,.7);
+    backdrop-filter:blur(18px);
+    border-radius:50px;
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    z-index:100;
+}
+
+nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:12px;
+    padding:9px 13px;
+    border-radius:30px;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:white;
+    background:var(--card2);
+}
+
+/* ---------- GENERAL ---------- */
+
+section{
+    min-height:100vh;
+    padding:120px 7vw;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.container{
+    width:min(1100px,100%);
+    margin:auto;
+}
+
+.section-label{
+    color:var(--muted);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(40px,7vw,76px);
+    line-height:1;
+    margin-bottom:25px;
+}
+
+p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+    text-align:center;
+    align-items:center;
+    position:relative;
+}
+
+.hero-small{
+    font-size:13px;
+    color:var(--muted);
+    letter-spacing:4px;
+    text-transform:uppercase;
+    animation:fadeUp 1s ease both;
+}
+
+.hero h1{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(75px,18vw,190px);
+    line-height:.85;
+    margin:25px 0;
+    animation:heroIn 1.3s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.hero h1 span{
+    display:block;
+    color:transparent;
+    -webkit-text-stroke:1px white;
+}
+
+.hero-desc{
+    max-width:500px;
+    animation:fadeUp 1.2s .3s ease both;
+}
+
+.enter{
+    margin-top:35px;
+    border:1px solid var(--border);
+    background:white;
+    color:black;
+    border-radius:40px;
+    padding:15px 25px;
+    font-weight:700;
+    transition:.3s;
+    animation:fadeUp 1.2s .5s ease both;
+}
+
+.enter:hover{
+    transform:translateY(-4px) scale(1.03);
+}
+
+@keyframes heroIn{
+    from{opacity:0;transform:translateY(40px) scale(.95)}
+    to{opacity:1;transform:none}
+}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:none}
+}
+
+/* ---------- PROFILE ---------- */
+
+.profile-grid{
+    display:grid;
+    grid-template-columns:1fr 1.5fr;
+    gap:20px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:28px;
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    background:var(--card2);
+}
+
+.profile-big{
+    min-height:430px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.avatar {
+  width: 80px;            /* Set your desired size */
+  height: 80px;           /* Keep equal to width for a square/circle */
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent; /* Removes any dark background inside the circle */
+  padding: 0;             /* Removes any inner spacing */
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* Forces the image to fill the entire circle */
+  display: block;
+}
+
+.profile-name{
+    font-size:40px;
+    font-family:"Playfair Display";
+}
+
+.nickname{
+    color:var(--muted);
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.info{
+    padding:20px;
+    border-radius:18px;
+    background:rgba(255,255,255,.035);
+}
+
+.info span{
+    display:block;
+    color:var(--muted);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:7px;
+}
+
+/* ---------- LORE ---------- */
+
+.lore-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.lore{
+    min-height:170px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.lore .emoji{
+    font-size:30px;
+}
+
+.lore h3{
+    font-size:20px;
+}
+
+.lore p{
+    font-size:13px;
+}
+
+/* ---------- MUSIC ---------- */
+
+.music-card{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+    padding:45px;
+}
+
+.album{
+    width:180px;
+    height:180px;
+    border-radius:25px;
+    margin:0 auto 30px;
+    background:
+        radial-gradient(circle at 50% 50%,#111 0 15%,transparent 16%),
+        repeating-radial-gradient(circle,#333 0 2px,#111 3px 6px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+
+.album::after{
+    content:"";
+    width:20px;
+    height:20px;
+    background:#eee;
+    border-radius:50%;
+}
+
+.music-card h3{
+    font-family:"Playfair Display";
+    font-size:32px;
+}
+
+.music-card button{
+    margin-top:25px;
+    border:1px solid var(--border);
+    background:transparent;
+    color:white;
+    padding:12px 25px;
+    border-radius:30px;
+}
+
+.spin{
+    animation:spin 4s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+/* ---------- DICTIONARY ---------- */
+
+.words{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:30px;
+}
+
+.word{
+    border:1px solid var(--border);
+    background:var(--card);
+    color:white;
+    border-radius:40px;
+    padding:15px 20px;
+    transition:.3s;
+}
+
+.word:hover{
+    background:white;
+    color:black;
+    transform:rotate(-2deg) scale(1.05);
+}
+
+#wordMeaning{
+    margin-top:30px;
+    min-height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:20px;
+}
+
+/* ---------- TIMELINE ---------- */
+
+.timeline{
+    position:relative;
+    max-width:750px;
+    margin:40px auto;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:var(--border);
+}
+
+.memory{
+    position:relative;
+    margin-bottom:35px;
+    padding-left:60px;
+}
+
+.memory::before{
+    content:"";
+    position:absolute;
+    left:14px;
+    top:8px;
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 0 20px white;
+}
+
+.memory h3{
+    margin-bottom:7px;
+}
+
+.memory p{
+    font-size:14px;
+}
+
+/* ---------- FACTS ---------- */
+
+.fact-box{
+    max-width:700px;
+    margin:30px auto;
+    min-height:180px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-family:"Playfair Display";
+    font-size:30px;
+    padding:30px;
+}
+
+.fact-button{
+    display:block;
+    margin:auto;
+    border:1px solid var(--border);
+    background:white;
+    color:black;
+    padding:14px 25px;
+    border-radius:30px;
+}
+
+/* ---------- QUIZ ---------- */
+
+.quiz{
+    max-width:700px;
+    margin:auto;
+}
+
+.question{
+    font-size:25px;
+    margin-bottom:20px;
+}
+
+.answers{
+    display:grid;
+    gap:10px;
+}
+
+.answer{
+    background:var(--card);
+    border:1px solid var(--border);
+    color:white;
+    padding:15px;
+    border-radius:15px;
+    text-align:left;
+    transition:.25s;
+}
+
+.answer:hover{
+    background:var(--card2);
+    transform:translateX(5px);
+}
+
+#quizResult{
+    margin-top:25px;
+    font-size:20px;
+}
+
+/* ---------- FINAL ---------- */
+
+.final{
+    text-align:center;
+    align-items:center;
+}
+
+.final h2{
+    max-width:800px;
+}
+
+.final-message{
+    max-width:600px;
+    margin:10px auto;
+}
+
+.heart{
+    font-size:50px;
+    margin-bottom:20px;
+    animation:heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.15)}
+}
+
+footer{
+    text-align:center;
+    color:#555;
+    padding:30px;
+    font-size:12px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:800px){
+    nav{
+        overflow-x:auto;
+        justify-content:flex-start;
+    }
+
+    nav a{
+        white-space:nowrap;
+    }
+
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
+
+    .lore-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:520px){
+    section{
+        padding:100px 5vw;
+    }
+
+    .lore-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:80px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#zee">Zee</a>
+    <a href="#lore">Lore</a>
+    <a href="#taste">Taste</a>
+    <a href="#words">Dictionary</a>
+    <a href="#story">Story</a>
+    <a href="#quiz">Quiz</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-small">A tiny corner of the internet</div>
+
+    <h1>
+        Zimal
+        <span>Zee.</span>
+    </h1>
+
+    <p class="hero-desc">
+        Also known as Imli. Also known as Zee.  
+        Somehow one of the most entertaining people to exist.
+    </p>
+
+    <button class="enter" onclick="document.querySelector('#zee').scrollIntoView()">
+        Enter Zee's world ↓
+    </button>
+</section>
+
+
+<!-- PROFILE -->
+<section id="zee">
+<div class="container">
+
+<div class="section-label">01 / The Zee File</div>
+<h2>Meet Zee.</h2>
+
+<div class="profile-grid">
+
+<div class="card profile-big">
+
+    <div class="avatar"><img src="ahh2.jpeg" alt="" ></div>
+
+    <div>
+        <div class="profile-name">Zimal</div>
+        <div class="nickname">Zee · Imli · Zebra(lil one)</div>
+    </div>
+
+    <p>
+        Weird at first. Then somehow became one of those people
+        I just end up talking to all the time.
+    </p>
+
+</div>
+
+<div class="card">
+    <div class="info-grid">
+
+        <div class="info">
+            <span>Birthday</span>
+            3 October 2011
+        </div>
+
+        <div class="info">
+            <span>Class</span>
+            10
+        </div>
+
+        <div class="info">
+            <span>Favorite color</span>
+            Black
+        </div>
+
+        <div class="info">
+            <span>Favorite sport</span>
+            Basketball
+        </div>
+
+        <div class="info">
+            <span>Football</span>
+            Barcelona
+        </div>
+
+        <div class="info">
+            <span>Game</span>
+            Roblox
+        </div>
+
+        <div class="info">
+            <span>Social</span>
+            Instagram
+        </div>
+
+        <div class="info">
+            <span>Vibe</span>
+            Chill
+        </div>
+
+    </div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- LORE -->
+<section id="lore">
+<div class="container">
+
+<div class="section-label">02 / Character Database</div>
+<h2>The Zee Lore.</h2>
+
+<div class="lore-grid">
+
+<div class="card lore">
+    <div class="emoji">😭</div>
+    <div>
+        <h3>Professional Menace</h3>
+        <p>Always messing around. Somehow still chill.</p>
+    </div>
+</div>
+
+<div class="card lore">
+    <div class="emoji">🎭</div>
+    <div>
+        <h3>Elite Humor</h3>
+        <p>Sarcastic, ragebait and basically every kind of humor except dark humor.</p>
+    </div>
+</div>
+
+<div class="card lore">
+    <div class="emoji">⚡</div>
+    <div>
+        <h3>Instant Replies</h3>
+        <p>If she isn't replying instantly, something has probably happened.</p>
+    </div>
+</div>
+
+<div class="card lore">
+    <div class="emoji">🏆</div>
+    <div>
+        <h3>Competitive</h3>
+        <p>Apparently winning is kind of important.</p>
+    </div>
+</div>
+
+<div class="card lore">
+    <div class="emoji">🧠</div>
+    <div>
+        <h3>Problem Solver</h3>
+        <p>One of the things she's genuinely really good at.</p>
+    </div>
+</div>
+
+<div class="card lore">
+    <div class="emoji">🌙</div>
+    <div>
+        <h3>Night Person</h3>
+        <p>Night > basically every other time of day.</p>
+    </div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- TASTE -->
+<section id="taste">
+<div class="container">
+
+<div class="section-label">03 / The Soundtrack</div>
+<h2>Peak music taste.</h2>
+
+<div class="card music-card">
+
+<div class="album" id="album"></div>
+
+<h3>Reflections</h3>
+<p>The Neighbourhood</p>
+
+<button onclick="toggleMusic()">▶ Play the imaginary record</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- DICTIONARY -->
+<section id="words">
+<div class="container">
+
+<div class="section-label">04 / The Zee Dictionary</div>
+<h2>Learn the language.</h2>
+
+<p>Click a phrase. You know the rules.</p>
+
+<div class="words">
+
+<button class="word" onclick="showWord('ISSOKE')">
+ISSOKE
+</button>
+
+<button class="word" onclick="showWord('YAWRR')">
+YAWRR
+</button>
+
+<button class="word" onclick="showWord('YAYAYAYAYAY')">
+YAYAYAYAYAY
+</button>
+
+<button class="word" onclick="showWord('NOTALK')">
+BLOCKK KRDO MUJHEE🥰
+</button>
+
+</div>
+
+<div class="card" id="wordMeaning">
+Click something 👀
+</div>
+
+</div>
+</section>
+
+
+<!-- STORY -->
+<section id="story">
+<div class="container">
+
+<div class="section-label">05 / How It Happened</div>
+<h2>The story.</h2>
+
+<p>
+There wasn't some massive planned beginning.
+I met on Instagram, she opened with
+<strong>“who tf r you now”</strong>,
+and somehow... here we are.
+</p>
+
+<div class="timeline">
+
+<div class="memory">
+    <h3>📱 The Instagram Era</h3>
+    <p>I met on Instagram.</p>
+</div>
+
+<div class="memory">
+    <h3>💬 The Conversations</h3>
+    <p>Talking became normal. Then talking became a lot.</p>
+</div>
+
+<div class="memory">
+    <h3>🫶 Getting Close</h3>
+    <p>She listens, talks, shares things, and somehow WE two just became really close.</p>
+</div>
+
+<div class="memory">
+    <h3>😂 The Humor</h3>
+    <p>At some point the conversations became mostly laughing and messing around. SOMETIMES deep.</p>
+</div>
+
+<div class="memory">
+    <h3>🌙 Current Lore</h3>
+    <p>And now there's apparently an entire website about her.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- FACTS -->
+<section>
+<div class="container">
+
+<div class="section-label">06 / Random Zee Generator</div>
+<h2>One more fact.</h2>
+
+<div class="card fact-box" id="fact">
+    Press the button.
+</div>
+
+<button class="fact-button" onclick="randomFact()">
+    Give me another →
+</button>
+
+</div>
+</section>
+
+
+<!-- QUIZ -->
+<section id="quiz">
+<div class="container">
+
+<div class="section-label">07 / Zee Knowledge Test</div>
+<h2>How well do you know her?</h2>
+
+<div class="card quiz">
+
+<div class="question" id="question">
+Loading...
+</div>
+
+<div class="answers" id="answers"></div>
+
+<div id="quizResult"></div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- FINAL -->
+<section class="final">
+
+<div class="heart">🫶</div>
+
+<div class="section-label">08 / End of the Internet</div>
+
+<h2>
+Some people just become important
+without you noticing it happen.
+</h2>
+
+<p class="final-message">
+From an Instagram “who tf r you now”
+to an entire little website.
+
+That's a pretty good plot twist.
+</p>
+
+<p style="margin-top:35px">
+Zee, Imli, Zebra(yep lil one). 🖤
+</p>
+
+</section>
+
+<footer>
+Made BY Abdullah for someone special · Zee edition
+</footer>
+
+
+<script>
+
+/* ---------- PARTICLES ---------- */
+
+const particleContainer = document.getElementById("particles");
+
+for(let i=0;i<45;i++){
+
+    const p=document.createElement("div");
+
+    p.className="particle";
+
+    p.style.left=Math.random()*100+"%";
+    p.style.top=Math.random()*100+"%";
+    p.style.animationDelay=Math.random()*8+"s";
+    p.style.animationDuration=(5+Math.random()*8)+"s";
+
+    particleContainer.appendChild(p);
+}
+
+
+/* ---------- MUSIC ---------- */
+
+function toggleMusic() {
+  const album = document.getElementById("album");
+  const music = document.getElementById("bgMusic");
+
+  if (music.paused) {
+    music.play();
+    album.classList.add("spin");
+  } else {
+    music.pause();
+    album.classList.remove("spin");
+  }
+}
+
+
+/* ---------- DICTIONARY ---------- */
+
+const meanings={
+
+    ISSOKE:
+    "The legendary Zee response. No other response. 😭",
+
+    YAWRR:
+    "YAWRR. Can't tell if she is being sarcastic or is genuinely done.",
+
+    YAYAYAYAYAY:
+    "Zee has entered maximum excitement mode.",
+
+    NOTALK:
+    "Warning: Zee is angry. Give her some space 💀"
+
+};
+
+function showWord(word){
+
+    document.getElementById("wordMeaning").innerText =
+        meanings[word];
+
+}
+
+
+/* ---------- RANDOM FACTS ---------- */
+
+const facts=[
+
+    "Her favorite color is black. Obviously. 🖤",
+
+    "She loves basketball. 🏀",
+
+    "She supports Barcelona. ⚽",
+
+    "Her favorite players are Lamine Yamal or Messi.",
+
+    "She plays Roblox. 🎮",
+
+    "She loves taking pictures. 📸",
+
+    "She prefers texting(atleast with me).",
+
+    "Her favorite time of day is night. 🌙",
+
+    "She replies instantly.",
+
+    "She says ISSOKE.",
+
+    "She says YAWRR.",
+
+    "When she's excited: YAYAYAYAYAY.",
+
+    "When she's angry: BLOCKK KRDO MUJHEE🥰.",
+
+    "She is competitive.",
+
+    "She is stubborn. According to MEE. 😭",
+
+    "She's really good at problem solving.",
+
+    "She's really good at making me smile.",
+
+    "She wants to travel outside Pakistan.",
+
+    "She hates maths.",
+
+    "Her music taste is peak. 🎧"
+
+];
+
+function randomFact(){
+
+    const box=document.getElementById("fact");
+
+    const random=facts[Math.floor(Math.random()*facts.length)];
+
+    box.style.opacity=0;
+
+    setTimeout(()=>{
+
+        box.innerText=random;
+        box.style.opacity=1;
+
+    },150);
+
+}
+
+
+/* ---------- QUIZ ---------- */
+
+const questions=[
+
+{
+    q:"What is Zee's favorite color?",
+    answers:["Blue","Black","Pink","Green"],
+    correct:1
+},
+
+{
+    q:"What sport does Zee like?",
+    answers:["Cricket","Football","Basketball","Tennis"],
+    correct:2
+},
+
+{
+    q:"Which game does she play?",
+    answers:["Minecraft","Roblox","DLS","Chess"],
+    correct:1
+},
+
+{
+    q:"What does she say when she's excited?",
+    answers:["BBG","YAYAYAYAYAY","ISSOKE","YAWRR"],
+    correct:1
+},
+
+{
+    q:"What does she say when she's angry?",
+    answers:["Bye","BLOCKK KRDO MUJHEE🥰","ISSOKE","I'm bored"],
+    correct:1
+},
+
+{
+    q:"Which team does she support?",
+    answers:["Real Madrid","Barcelona","Liverpool","Arsenal"],
+    correct:1
+},
+
+{
+    q:"What is her favorite song?",
+    answers:[
+        "Sweater Weather",
+        "Reflections",
+        "After Dark",
+        "WAGWAN"
+    ],
+    correct:1
+}
+
+];
+
+let currentQuestion=0;
+let score=0;
+
+function loadQuestion(){
+
+    if(currentQuestion>=questions.length){
+
+        document.getElementById("question").innerText=
+            "Quiz complete 🎉";
+
+        document.getElementById("answers").innerHTML="";
+
+        document.getElementById("quizResult").innerText=
+            `You got ${score}/${questions.length}.`;
+
+        return;
+    }
+
+    const q=questions[currentQuestion];
+
+    document.getElementById("question").innerText=
+        q.q;
+
+    const answers=document.getElementById("answers");
+
+    answers.innerHTML="";
+
+    q.answers.forEach((answer,index)=>{
+
+        const button=document.createElement("button");
+
+        button.className="answer";
+        button.innerText=answer;
+
+        button.onclick=()=>{
+
+            if(index===q.correct){
+
+                score++;
+
+                button.innerText="Correct 😭🔥";
+
+            }else{
+
+                button.innerText="Nahhh 💀";
+
+            }
+
+            setTimeout(()=>{
+
+                currentQuestion++;
+                loadQuestion();
+
+            },700);
+
+        };
+
+        answers.appendChild(button);
+
+    });
+
+}
+
+loadQuestion();
+
+
+/* ---------- EASTER EGG ---------- */
+
+let clicks=0;
+
+document.querySelector(".hero h1").addEventListener("click",()=>{
+
+    clicks++;
+
+    if(clicks===5){
+
+        document.body.style.transition="1s";
+
+        document.body.style.filter="invert(1)";
+
+        setTimeout(()=>{
+
+            document.body.style.filter="invert(0)";
+
+        },700);
+
+        clicks=0;
+
+    }
+
+});
+
+</script>
+<audio id="bgMusic" src="Reflection.mp3" preload="auto"></audio>
+
+</body>
+</html>
