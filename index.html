@@ -37,8 +37,6 @@ body{
     overflow-x:hidden;
 }
 
-/* ---------- BACKGROUND ---------- */
-
 body::before{
     content:"";
     position:fixed;
@@ -79,6 +77,7 @@ body::before{
     }
 }
 
+
 /* ---------- NAV ---------- */
 
 nav{
@@ -111,6 +110,7 @@ nav a:hover{
     color:white;
     background:var(--card2);
 }
+
 
 /* ---------- GENERAL ---------- */
 
@@ -159,6 +159,7 @@ p{
     transform:translateY(-6px);
     background:var(--card2);
 }
+
 
 /* ---------- HERO ---------- */
 
@@ -236,6 +237,7 @@ p{
     }
 }
 
+
 /* ---------- ABOUT ---------- */
 
 .profile-grid{
@@ -270,10 +272,6 @@ p{
     font-family:"Playfair Display";
 }
 
-.nickname{
-    color:var(--muted);
-}
-
 .info-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -295,33 +293,6 @@ p{
     margin-bottom:7px;
 }
 
-/* ---------- SKILLS ---------- */
-
-.skills-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-.skill{
-    min-height:180px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-}
-
-.skill-icon{
-    font-size:30px;
-}
-
-.skill h3{
-    font-size:21px;
-    margin-bottom:7px;
-}
-
-.skill p{
-    font-size:13px;
-}
 
 /* ---------- PROJECTS ---------- */
 
@@ -332,9 +303,10 @@ p{
 }
 
 .project{
-    min-height:260px;
-    position:relative;
-    overflow:hidden;
+    min-height:280px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
 .project-number{
@@ -363,6 +335,7 @@ p{
     color:var(--muted);
 }
 
+
 /* ---------- HOBBIES ---------- */
 
 .hobbies{
@@ -384,6 +357,7 @@ p{
     color:black;
     transform:translateY(-4px);
 }
+
 
 /* ---------- MUSIC ---------- */
 
@@ -444,6 +418,7 @@ p{
     }
 }
 
+
 /* ---------- PERSONALITY ---------- */
 
 .personality-grid{
@@ -465,6 +440,7 @@ p{
 .personality h3{
     margin-bottom:8px;
 }
+
 
 /* ---------- CONTACT ---------- */
 
@@ -490,6 +466,7 @@ p{
 .contact-button:hover{
     transform:translateY(-4px);
 }
+
 
 /* ---------- FINAL ---------- */
 
@@ -530,6 +507,7 @@ footer{
     font-size:12px;
 }
 
+
 /* ---------- RESPONSIVE ---------- */
 
 @media(max-width:800px){
@@ -547,13 +525,12 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .skills-grid,
-    .personality-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
     .projects-grid{
         grid-template-columns:1fr;
+    }
+
+    .personality-grid{
+        grid-template-columns:1fr 1fr;
     }
 }
 
@@ -563,7 +540,6 @@ footer{
         padding:100px 5vw;
     }
 
-    .skills-grid,
     .personality-grid{
         grid-template-columns:1fr;
     }
@@ -584,16 +560,19 @@ footer{
 
 <div id="particles"></div>
 
-<!-- NAVIGATION -->
+
+<!-- NAV -->
 
 <nav>
+
     <a href="#home">Home</a>
     <a href="#about">About</a>
-    <a href="#skills">Interests</a>
     <a href="#projects">Projects</a>
     <a href="#hobbies">Hobbies</a>
     <a href="#music">Music</a>
+    <a href="#personality">About Me</a>
     <a href="#contact">Contact</a>
+
 </nav>
 
 
@@ -607,18 +586,22 @@ footer{
 
     <h1>
         Zimal
-        <span>Zee.</span>
+        <span>Portfolio.</span>
     </h1>
 
     <p class="hero-desc">
-        I'm Zimal — a student who enjoys basketball,
-        photography, gaming, good music, and spending
-        time doing the things I genuinely enjoy.
+        Hi, I'm Zimal. I'm a student who enjoys
+        exploring my interests, working on different
+        projects, and making the most of the things
+        I love.
     </p>
 
-    <button class="enter"
+    <button
+        class="enter"
         onclick="document.querySelector('#about').scrollIntoView()">
-        Explore my world ↓
+
+        Explore my portfolio ↓
+
     </button>
 
 </section>
@@ -635,10 +618,12 @@ footer{
     </div>
 
     <h2>
-        Meet Zimal.
+        Who I am.
     </h2>
 
+
     <div class="profile-grid">
+
 
         <div class="card profile-big">
 
@@ -647,19 +632,18 @@ footer{
             </div>
 
             <div>
+
                 <div class="profile-name">
                     Zimal
                 </div>
 
-                <div class="nickname">
-                    Zee · Imli · Zebra
-                </div>
             </div>
 
             <p>
-                I'm a student who likes keeping things
-                simple, having fun, and being around the
-                people and things I care about.
+                I'm currently a student in Class 10.
+                I like keeping life simple, trying new
+                things, and spending time doing what
+                genuinely makes me happy.
             </p>
 
         </div>
@@ -690,7 +674,7 @@ footer{
                 </div>
 
                 <div class="info">
-                    <span>Football</span>
+                    <span>Football Team</span>
                     Barcelona
                 </div>
 
@@ -700,7 +684,7 @@ footer{
                 </div>
 
                 <div class="info">
-                    <span>Social</span>
+                    <span>Social Platform</span>
                     Instagram
                 </div>
 
@@ -720,136 +704,6 @@ footer{
 </section>
 
 
-<!-- INTERESTS -->
-
-<section id="skills">
-
-<div class="container">
-
-    <div class="section-label">
-        02 / Interests
-    </div>
-
-    <h2>
-        Things I enjoy.
-    </h2>
-
-    <div class="skills-grid">
-
-        <div class="card skill">
-
-            <div class="skill-icon">
-                🏀
-            </div>
-
-            <div>
-                <h3>Basketball</h3>
-
-                <p>
-                    One of my favorite sports. I enjoy
-                    playing, watching and keeping up with it.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="card skill">
-
-            <div class="skill-icon">
-                📸
-            </div>
-
-            <div>
-                <h3>Photography</h3>
-
-                <p>
-                    I love taking pictures and capturing
-                    random moments that look worth remembering.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="card skill">
-
-            <div class="skill-icon">
-                🎮
-            </div>
-
-            <div>
-                <h3>Gaming</h3>
-
-                <p>
-                    Roblox is one of the games I enjoy
-                    playing when I have free time.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="card skill">
-
-            <div class="skill-icon">
-                🧠
-            </div>
-
-            <div>
-                <h3>Problem Solving</h3>
-
-                <p>
-                    I enjoy figuring things out and finding
-                    solutions when something doesn't make sense.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="card skill">
-
-            <div class="skill-icon">
-                🌙
-            </div>
-
-            <div>
-                <h3>Night Vibes</h3>
-
-                <p>
-                    Night is easily my favorite time of day.
-                    Everything just feels calmer.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="card skill">
-
-            <div class="skill-icon">
-                ✈️
-            </div>
-
-            <div>
-                <h3>Travel</h3>
-
-                <p>
-                    One of my goals is to travel outside
-                    Pakistan and experience new places.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
 <!-- PROJECTS -->
 
 <section id="projects">
@@ -857,109 +711,135 @@ footer{
 <div class="container">
 
     <div class="section-label">
-        03 / Projects
+        02 / My Projects
     </div>
 
     <h2>
-        Things I'm into.
+        Things I've created.
     </h2>
 
     <p style="max-width:600px;margin-bottom:35px;">
-        A few personal projects and creative things
-        that represent my interests.
+
+        This section contains some of my projects,
+        work, and things I've created.
+
     </p>
 
 
     <div class="projects-grid">
 
 
+        <!-- PROJECT CARD 01 -->
+
         <div class="card project">
 
-            <div class="project-number">
-                PROJECT 01
+            <div>
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h3>
+                    Project Title
+                </h3>
+
+                <p>
+                    Add your project description here.
+                    Explain what the project is and what
+                    you created.
+                </p>
+
             </div>
 
-            <h3>
-                Photography Collection
-            </h3>
-
-            <p>
-                A personal collection of photographs,
-                everyday moments, places and things
-                that I find interesting.
-            </p>
-
             <span class="project-tag">
-                Photography
+                Add Category
             </span>
 
         </div>
 
 
+        <!-- PROJECT CARD 02 -->
+
         <div class="card project">
 
-            <div class="project-number">
-                PROJECT 02
+            <div>
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h3>
+                    Project Title
+                </h3>
+
+                <p>
+                    Add your project description here.
+                    Explain what the project is and what
+                    you created.
+                </p>
+
             </div>
 
-            <h3>
-                Roblox World
-            </h3>
-
-            <p>
-                Exploring Roblox, trying different games,
-                experimenting with ideas and creating
-                my own little gaming experiences.
-            </p>
-
             <span class="project-tag">
-                Gaming
+                Add Category
             </span>
 
         </div>
 
 
+        <!-- PROJECT CARD 03 -->
+
         <div class="card project">
 
-            <div class="project-number">
-                PROJECT 03
+            <div>
+
+                <div class="project-number">
+                    PROJECT 03
+                </div>
+
+                <h3>
+                    Project Title
+                </h3>
+
+                <p>
+                    Add your project description here.
+                    Explain what the project is and what
+                    you created.
+                </p>
+
             </div>
 
-            <h3>
-                Basketball Journey
-            </h3>
-
-            <p>
-                Improving my basketball skills, learning
-                more about the game and following the
-                sport I enjoy.
-            </p>
-
             <span class="project-tag">
-                Sports
+                Add Category
             </span>
 
         </div>
 
 
+        <!-- PROJECT CARD 04 -->
+
         <div class="card project">
 
-            <div class="project-number">
-                PROJECT 04
+            <div>
+
+                <div class="project-number">
+                    PROJECT 04
+                </div>
+
+                <h3>
+                    Project Title
+                </h3>
+
+                <p>
+                    Add your project description here.
+                    Explain what the project is and what
+                    you created.
+                </p>
+
             </div>
 
-            <h3>
-                Future Ideas
-            </h3>
-
-            <p>
-                There are always new things I want to try.
-                This space is for the ideas and projects
-                that come next.
-            </p>
-
             <span class="project-tag">
-                Coming Soon
+                Add Category
             </span>
 
         </div>
@@ -979,30 +859,47 @@ footer{
 <div class="container">
 
     <div class="section-label">
-        04 / Hobbies
+        03 / Hobbies
     </div>
 
     <h2>
-        When I'm not studying.
+        What I do outside school.
     </h2>
+
 
     <div class="hobbies">
 
-        <div class="hobby">🏀 Basketball</div>
+        <div class="hobby">
+            🏀 Basketball
+        </div>
 
-        <div class="hobby">📸 Taking Pictures</div>
+        <div class="hobby">
+            📸 Photography
+        </div>
 
-        <div class="hobby">🎮 Roblox</div>
+        <div class="hobby">
+            🎮 Roblox
+        </div>
 
-        <div class="hobby">🎧 Listening to Music</div>
+        <div class="hobby">
+            🎧 Listening to Music
+        </div>
 
-        <div class="hobby">📱 Instagram</div>
+        <div class="hobby">
+            📱 Instagram
+        </div>
 
-        <div class="hobby">⚽ Football</div>
+        <div class="hobby">
+            ⚽ Football
+        </div>
 
-        <div class="hobby">🌙 Staying Up Late</div>
+        <div class="hobby">
+            🌙 Staying Up Late
+        </div>
 
-        <div class="hobby">✈️ Travelling</div>
+        <div class="hobby">
+            ✈️ Travelling
+        </div>
 
     </div>
 
@@ -1018,17 +915,20 @@ footer{
 <div class="container">
 
     <div class="section-label">
-        05 / My Soundtrack
+        04 / My Soundtrack
     </div>
 
     <h2>
-        Music I love.
+        My favorite song.
     </h2>
 
 
     <div class="card music-card">
 
-        <div class="album" id="album"></div>
+        <div
+            class="album"
+            id="album">
+        </div>
 
         <h3>
             Reflections
@@ -1051,19 +951,21 @@ footer{
 
 <!-- PERSONALITY -->
 
-<section>
+<section id="personality">
 
 <div class="container">
 
     <div class="section-label">
-        06 / A Little More About Me
+        05 / My Personality
     </div>
 
     <h2>
-        My vibe.
+        A little about me.
     </h2>
 
+
     <div class="personality-grid">
+
 
         <div class="card personality">
 
@@ -1076,8 +978,8 @@ footer{
             </h3>
 
             <p>
-                Sarcasm, random jokes and messing around
-                are definitely part of my personality.
+                I like sarcasm, random jokes,
+                messing around and having fun.
             </p>
 
         </div>
@@ -1094,8 +996,8 @@ footer{
             </h3>
 
             <p>
-                I like winning and I definitely don't
-                enjoy losing.
+                I enjoy competition and always
+                try to do my best.
             </p>
 
         </div>
@@ -1108,12 +1010,12 @@ footer{
             </div>
 
             <h3>
-                Curious
+                Problem Solver
             </h3>
 
             <p>
-                I like figuring things out and understanding
-                how things work.
+                I like figuring things out and
+                finding solutions to problems.
             </p>
 
         </div>
@@ -1130,8 +1032,8 @@ footer{
             </h3>
 
             <p>
-                Give me nighttime over early mornings
-                any day.
+                Nighttime is easily my favorite
+                time of the day.
             </p>
 
         </div>
@@ -1148,7 +1050,7 @@ footer{
             </h3>
 
             <p>
-                I like keeping things comfortable,
+                I prefer keeping things comfortable,
                 simple and genuine.
             </p>
 
@@ -1162,15 +1064,16 @@ footer{
             </div>
 
             <h3>
-                Always Exploring
+                Curious
             </h3>
 
             <p>
-                There's always something new I want to
-                experience or learn.
+                I'm always interested in discovering
+                something new.
             </p>
 
         </div>
+
 
     </div>
 
@@ -1186,8 +1089,9 @@ footer{
 <div class="container">
 
     <div class="section-label">
-        07 / Contact
+        06 / Contact
     </div>
+
 
     <div class="card contact">
 
@@ -1196,14 +1100,17 @@ footer{
         </h2>
 
         <p>
-            Want to talk, share something, or just say hi?
-            You can find me on Instagram.
+            If you'd like to get in touch with me,
+            you can find me on Instagram.
         </p>
 
-        <a class="contact-button"
-           href="#"
-           onclick="alert('Add your Instagram link here!')">
+        <a
+            class="contact-button"
+            href="#"
+            onclick="alert('Add your Instagram link here!')">
+
             Instagram →
+
         </a>
 
     </div>
@@ -1222,34 +1129,34 @@ footer{
     </div>
 
     <div class="section-label">
-        End of the portfolio
+        End of my portfolio
     </div>
 
     <h2>
-        This is only the beginning.
+        Still learning. Still creating.
     </h2>
 
     <p class="final-message">
-        I'm still figuring things out, trying new things,
-        meeting new people and making memories along
-        the way.
+        I'm still exploring new ideas, learning new
+        things and figuring out what I want to create
+        next.
     </p>
 
     <p style="margin-top:35px;">
-        Zimal · Zee · Imli · Zebra
+        Zimal
     </p>
 
 </section>
 
 
 <footer>
-    Designed & developed by Muhammad Abdullah · Zimal Edition
+    Designed & developed by Muhammad Abdullah
 </footer>
 
 
-<!-- PARTICLES -->
-
 <script>
+
+/* ---------- PARTICLES ---------- */
 
 const particleContainer =
     document.getElementById("particles");
@@ -1304,8 +1211,6 @@ function toggleMusic(){
 
 </script>
 
-
-<!-- MUSIC FILE -->
 
 <audio
     id="bgMusic"
