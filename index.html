@@ -1,20 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Abdullah — Personal Portfolio</title>
+<title>Zimal — Personal Portfolio</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap');
 
 :root{
     --bg:#070707;
     --card:rgba(255,255,255,.055);
     --card2:rgba(255,255,255,.09);
     --text:#f5f5f5;
-    --muted:#999;
+    --muted:#9b9b9b;
     --border:rgba(255,255,255,.11);
 }
 
@@ -35,7 +37,7 @@ body{
     overflow-x:hidden;
 }
 
-/* BACKGROUND */
+/* ---------- BACKGROUND ---------- */
 
 body::before{
     content:"";
@@ -43,8 +45,8 @@ body::before{
     inset:0;
     pointer-events:none;
     background:
-        radial-gradient(circle at 15% 20%,rgba(255,255,255,.055),transparent 25%),
-        radial-gradient(circle at 85% 75%,rgba(255,255,255,.035),transparent 25%);
+        radial-gradient(circle at 20% 20%,rgba(255,255,255,.055),transparent 25%),
+        radial-gradient(circle at 80% 70%,rgba(255,255,255,.035),transparent 25%);
     z-index:-2;
 }
 
@@ -68,30 +70,31 @@ body::before{
 @keyframes float{
     0%,100%{
         transform:translateY(0);
-        opacity:.12;
+        opacity:.15;
     }
+
     50%{
         transform:translateY(-35px);
-        opacity:.45;
+        opacity:.5;
     }
 }
 
-/* NAV */
+/* ---------- NAV ---------- */
 
 nav{
     position:fixed;
     top:18px;
     left:50%;
     transform:translateX(-50%);
-    width:min(94%,850px);
+    width:min(92%,850px);
     padding:10px;
     border:1px solid var(--border);
-    background:rgba(10,10,10,.72);
+    background:rgba(10,10,10,.7);
     backdrop-filter:blur(18px);
     border-radius:50px;
     display:flex;
     justify-content:center;
-    gap:5px;
+    gap:6px;
     z-index:100;
 }
 
@@ -109,7 +112,7 @@ nav a:hover{
     background:var(--card2);
 }
 
-/* GENERAL */
+/* ---------- GENERAL ---------- */
 
 section{
     min-height:100vh;
@@ -126,7 +129,7 @@ section{
 
 .section-label{
     color:var(--muted);
-    font-size:11px;
+    font-size:12px;
     text-transform:uppercase;
     letter-spacing:3px;
     margin-bottom:15px;
@@ -134,7 +137,7 @@ section{
 
 h2{
     font-family:"Playfair Display",serif;
-    font-size:clamp(45px,7vw,78px);
+    font-size:clamp(40px,7vw,76px);
     line-height:1;
     margin-bottom:25px;
 }
@@ -157,12 +160,7 @@ p{
     background:var(--card2);
 }
 
-button{
-    font-family:inherit;
-    cursor:pointer;
-}
-
-/* HERO */
+/* ---------- HERO ---------- */
 
 .hero{
     text-align:center;
@@ -171,7 +169,7 @@ button{
 }
 
 .hero-small{
-    font-size:12px;
+    font-size:13px;
     color:var(--muted);
     letter-spacing:4px;
     text-transform:uppercase;
@@ -180,10 +178,10 @@ button{
 
 .hero h1{
     font-family:"Playfair Display",serif;
-    font-size:clamp(80px,18vw,185px);
-    line-height:.82;
+    font-size:clamp(75px,18vw,190px);
+    line-height:.85;
     margin:25px 0;
-    animation:heroIn 1.2s cubic-bezier(.2,.8,.2,1) both;
+    animation:heroIn 1.3s cubic-bezier(.2,.8,.2,1) both;
 }
 
 .hero h1 span{
@@ -193,42 +191,25 @@ button{
 }
 
 .hero-desc{
-    max-width:580px;
+    max-width:550px;
     animation:fadeUp 1.2s .3s ease both;
 }
 
-.hero-buttons{
-    display:flex;
-    gap:12px;
+.enter{
     margin-top:35px;
-    animation:fadeUp 1.2s .5s ease both;
-}
-
-.btn{
     border:1px solid var(--border);
     background:white;
     color:black;
     border-radius:40px;
-    padding:14px 24px;
+    padding:15px 25px;
     font-weight:700;
-    text-decoration:none;
     transition:.3s;
+    animation:fadeUp 1.2s .5s ease both;
+    cursor:pointer;
 }
 
-.btn:hover{
-    transform:translateY(-4px);
-}
-
-.btn-outline{
-    background:transparent;
-    color:white;
-}
-
-.scroll-hint{
-    position:absolute;
-    bottom:35px;
-    color:#555;
-    font-size:12px;
+.enter:hover{
+    transform:translateY(-4px) scale(1.03);
 }
 
 @keyframes heroIn{
@@ -236,6 +217,7 @@ button{
         opacity:0;
         transform:translateY(40px) scale(.95);
     }
+
     to{
         opacity:1;
         transform:none;
@@ -247,55 +229,55 @@ button{
         opacity:0;
         transform:translateY(20px);
     }
+
     to{
         opacity:1;
         transform:none;
     }
 }
 
-/* ABOUT */
+/* ---------- ABOUT ---------- */
 
-.about-grid{
+.profile-grid{
     display:grid;
-    grid-template-columns:1fr 1.4fr;
+    grid-template-columns:1fr 1.5fr;
     gap:20px;
 }
 
-.profile{
-    min-height:400px;
+.profile-big{
+    min-height:430px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
 }
 
 .avatar{
-    width:85px;
-    height:85px;
+    width:90px;
+    height:90px;
     border-radius:50%;
     overflow:hidden;
-    border:1px solid var(--border);
 }
 
 .avatar img{
     width:100%;
     height:100%;
     object-fit:cover;
+    display:block;
 }
 
 .profile-name{
-    font-family:"Playfair Display";
     font-size:40px;
-    margin-top:20px;
+    font-family:"Playfair Display";
 }
 
-.about-text{
-    font-size:17px;
+.nickname{
+    color:var(--muted);
 }
 
 .info-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:14px;
+    gap:15px;
 }
 
 .info{
@@ -306,14 +288,14 @@ button{
 
 .info span{
     display:block;
-    color:#777;
-    font-size:10px;
+    color:var(--muted);
+    font-size:11px;
     text-transform:uppercase;
     letter-spacing:2px;
-    margin-bottom:8px;
+    margin-bottom:7px;
 }
 
-/* SKILLS */
+/* ---------- SKILLS ---------- */
 
 .skills-grid{
     display:grid;
@@ -321,20 +303,27 @@ button{
     gap:15px;
 }
 
-.skill-card h3{
-    margin-bottom:10px;
-}
-
-.skill-card p{
-    font-size:14px;
+.skill{
+    min-height:180px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
 .skill-icon{
-    font-size:28px;
-    margin-bottom:25px;
+    font-size:30px;
 }
 
-/* PROJECTS */
+.skill h3{
+    font-size:21px;
+    margin-bottom:7px;
+}
+
+.skill p{
+    font-size:13px;
+}
+
+/* ---------- PROJECTS ---------- */
 
 .projects-grid{
     display:grid;
@@ -344,96 +333,59 @@ button{
 
 .project{
     min-height:260px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-}
-
-.project-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
+    position:relative;
+    overflow:hidden;
 }
 
 .project-number{
     color:#555;
     font-size:13px;
+    letter-spacing:2px;
 }
 
 .project h3{
-    font-size:25px;
-    margin-bottom:10px;
+    font-family:"Playfair Display";
+    font-size:30px;
+    margin:20px 0 10px;
 }
 
 .project p{
     font-size:14px;
 }
 
-.tags{
+.project-tag{
+    display:inline-block;
+    margin-top:25px;
+    padding:8px 13px;
+    border:1px solid var(--border);
+    border-radius:30px;
+    font-size:11px;
+    color:var(--muted);
+}
+
+/* ---------- HOBBIES ---------- */
+
+.hobbies{
     display:flex;
     flex-wrap:wrap;
-    gap:7px;
-    margin-top:20px;
+    gap:12px;
 }
 
-.tag{
-    padding:7px 11px;
+.hobby{
+    padding:18px 23px;
     border:1px solid var(--border);
-    border-radius:20px;
-    font-size:10px;
-    color:#aaa;
+    background:var(--card);
+    border-radius:40px;
+    transition:.3s;
 }
 
-.project-links{
-    display:flex;
-    gap:10px;
-    margin-top:25px;
-}
-
-.project-btn{
-    text-decoration:none;
-    color:white;
-    border:1px solid var(--border);
-    padding:9px 15px;
-    border-radius:20px;
-    font-size:12px;
-    transition:.25s;
-}
-
-.project-btn:hover{
+.hobby:hover{
     background:white;
     color:black;
+    transform:translateY(-4px);
 }
 
-/* CURRENTLY */
-
-.current-grid{
-    display:grid;
-    grid-template-columns:1.3fr 1fr;
-    gap:18px;
-}
-
-.learning-list{
-    display:grid;
-    gap:12px;
-    margin-top:20px;
-}
-
-.learning{
-    padding:17px;
-    background:rgba(255,255,255,.035);
-    border-radius:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.learning span{
-    color:#777;
-    font-size:12px;
-}
-
-/* MUSIC */
+/* ---------- MUSIC ---------- */
 
 .music-card{
     max-width:700px;
@@ -469,7 +421,7 @@ button{
 
 .music-card h3{
     font-family:"Playfair Display";
-    font-size:34px;
+    font-size:32px;
 }
 
 .music-card button{
@@ -479,6 +431,7 @@ button{
     color:white;
     padding:12px 25px;
     border-radius:30px;
+    cursor:pointer;
 }
 
 .spin{
@@ -491,52 +444,93 @@ button{
     }
 }
 
-/* CONTACT */
+/* ---------- PERSONALITY ---------- */
+
+.personality-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.personality{
+    text-align:center;
+    padding:35px 20px;
+}
+
+.personality-icon{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.personality h3{
+    margin-bottom:8px;
+}
+
+/* ---------- CONTACT ---------- */
 
 .contact{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+}
+
+.contact-button{
+    display:inline-block;
+    margin-top:25px;
+    border:1px solid var(--border);
+    background:white;
+    color:black;
+    padding:14px 25px;
+    border-radius:30px;
+    font-weight:700;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.contact-button:hover{
+    transform:translateY(-4px);
+}
+
+/* ---------- FINAL ---------- */
+
+.final{
     text-align:center;
     align-items:center;
 }
 
-.contact h2{
+.final h2{
     max-width:850px;
 }
 
-.contact p{
-    max-width:550px;
+.final-message{
+    max-width:600px;
+    margin:10px auto;
 }
 
-.contact-links{
-    display:flex;
-    gap:12px;
-    margin-top:30px;
-    flex-wrap:wrap;
-    justify-content:center;
+.heart{
+    font-size:50px;
+    margin-bottom:20px;
+    animation:heartbeat 1.5s infinite;
 }
 
-.contact-link{
-    text-decoration:none;
-    color:white;
-    border:1px solid var(--border);
-    padding:13px 20px;
-    border-radius:30px;
-    transition:.3s;
-}
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
 
-.contact-link:hover{
-    background:white;
-    color:black;
-    transform:translateY(-3px);
+    50%{
+        transform:scale(1.15);
+    }
 }
 
 footer{
     text-align:center;
-    color:#444;
-    padding:35px;
+    color:#555;
+    padding:30px;
     font-size:12px;
 }
 
-/* RESPONSIVE */
+/* ---------- RESPONSIVE ---------- */
 
 @media(max-width:800px){
 
@@ -549,12 +543,12 @@ footer{
         white-space:nowrap;
     }
 
-    .about-grid,
-    .current-grid{
+    .profile-grid{
         grid-template-columns:1fr;
     }
 
-    .skills-grid{
+    .skills-grid,
+    .personality-grid{
         grid-template-columns:1fr 1fr;
     }
 
@@ -569,28 +563,20 @@ footer{
         padding:100px 5vw;
     }
 
-    .hero h1{
-        font-size:80px;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-        width:100%;
-        max-width:250px;
+    .skills-grid,
+    .personality-grid{
+        grid-template-columns:1fr;
     }
 
     .info-grid{
         grid-template-columns:1fr;
     }
 
-    .skills-grid{
-        grid-template-columns:1fr;
-    }
-
-    .music-card{
-        padding:30px 20px;
+    .hero h1{
+        font-size:80px;
     }
 }
+
 </style>
 </head>
 
@@ -598,14 +584,14 @@ footer{
 
 <div id="particles"></div>
 
-<!-- NAV -->
+<!-- NAVIGATION -->
 
 <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
-    <a href="#skills">Skills</a>
+    <a href="#skills">Interests</a>
     <a href="#projects">Projects</a>
-    <a href="#currently">Currently</a>
+    <a href="#hobbies">Hobbies</a>
     <a href="#music">Music</a>
     <a href="#contact">Contact</a>
 </nav>
@@ -616,32 +602,24 @@ footer{
 <section class="hero" id="home">
 
     <div class="hero-small">
-        Personal Portfolio · Developer · Student
+        Personal Portfolio
     </div>
 
     <h1>
-        Abdullah
-        <span>abdullahpy.</span>
+        Zimal
+        <span>Zee.</span>
     </h1>
 
     <p class="hero-desc">
-        I'm a student and beginner developer who enjoys building things,
-        experimenting with code, and turning random ideas into actual projects.
+        I'm Zimal — a student who enjoys basketball,
+        photography, gaming, good music, and spending
+        time doing the things I genuinely enjoy.
     </p>
 
-    <div class="hero-buttons">
-        <a href="#projects" class="btn">
-            View my projects ↓
-        </a>
-
-        <a href="#about" class="btn btn-outline">
-            About me
-        </a>
-    </div>
-
-    <div class="scroll-hint">
-        ↓ scroll to explore
-    </div>
+    <button class="enter"
+        onclick="document.querySelector('#about').scrollIntoView()">
+        Explore my world ↓
+    </button>
 
 </section>
 
@@ -657,33 +635,31 @@ footer{
     </div>
 
     <h2>
-        A little about me.
+        Meet Zimal.
     </h2>
 
-    <div class="about-grid">
+    <div class="profile-grid">
 
-        <div class="card profile">
+        <div class="card profile-big">
 
             <div class="avatar">
-                <!-- Replace with your photo -->
-                <img src="profile.jpg" alt="Abdullah">
+                <img src="ahh2.jpeg" alt="Zimal">
             </div>
 
             <div>
                 <div class="profile-name">
-                    Muhammad Abdullah
+                    Zimal
                 </div>
 
-                <p>
-                    Student · Developer · Football enthusiast
-                </p>
+                <div class="nickname">
+                    Zee · Imli · Zebra
+                </div>
             </div>
 
-            <p class="about-text">
-                I'm someone who genuinely enjoys figuring out how things work.
-                I like programming, technology, football, chess and cubing,
-                but most importantly, I like building things instead of
-                just watching tutorials about them.
+            <p>
+                I'm a student who likes keeping things
+                simple, having fun, and being around the
+                people and things I care about.
             </p>
 
         </div>
@@ -694,43 +670,43 @@ footer{
             <div class="info-grid">
 
                 <div class="info">
-                    <span>Education</span>
-                    Class 10 · SSC
+                    <span>Birthday</span>
+                    3 October 2011
                 </div>
 
                 <div class="info">
-                    <span>Based In</span>
-                    Pakistan
+                    <span>Class</span>
+                    10
                 </div>
 
                 <div class="info">
-                    <span>Focus</span>
-                    Programming
+                    <span>Favorite Color</span>
+                    Black
                 </div>
 
                 <div class="info">
                     <span>Favorite Sport</span>
-                    Football
+                    Basketball
                 </div>
 
                 <div class="info">
-                    <span>Favorite Player</span>
-                    Cristiano Ronaldo
+                    <span>Football</span>
+                    Barcelona
                 </div>
 
                 <div class="info">
-                    <span>Hobbies</span>
-                    Chess · Cubing
+                    <span>Game</span>
+                    Roblox
                 </div>
 
                 <div class="info">
-                    <span>Learning</span>
-                    Python
+                    <span>Social</span>
+                    Instagram
                 </div>
 
                 <div class="info">
-                    <span>Goal</span>
-                    Build real projects
+                    <span>Favorite Time</span>
+                    Night
                 </div>
 
             </div>
@@ -744,92 +720,127 @@ footer{
 </section>
 
 
-<!-- SKILLS -->
+<!-- INTERESTS -->
 
 <section id="skills">
 
 <div class="container">
 
     <div class="section-label">
-        02 / Skills
+        02 / Interests
     </div>
 
     <h2>
-        Things I work with.
+        Things I enjoy.
     </h2>
 
     <div class="skills-grid">
 
-        <div class="card skill-card">
-            <div class="skill-icon">🌐</div>
+        <div class="card skill">
 
-            <h3>Web Development</h3>
+            <div class="skill-icon">
+                🏀
+            </div>
 
-            <p>
-                HTML, CSS and JavaScript.
-                I enjoy creating interactive websites
-                and experimenting with UI.
-            </p>
+            <div>
+                <h3>Basketball</h3>
+
+                <p>
+                    One of my favorite sports. I enjoy
+                    playing, watching and keeping up with it.
+                </p>
+            </div>
+
         </div>
 
 
-        <div class="card skill-card">
-            <div class="skill-icon">🔥</div>
+        <div class="card skill">
 
-            <h3>Firebase</h3>
+            <div class="skill-icon">
+                📸
+            </div>
 
-            <p>
-                I've worked with Firebase Authentication
-                and Realtime Database for web projects.
-            </p>
+            <div>
+                <h3>Photography</h3>
+
+                <p>
+                    I love taking pictures and capturing
+                    random moments that look worth remembering.
+                </p>
+            </div>
+
         </div>
 
 
-        <div class="card skill-card">
-            <div class="skill-icon">🐍</div>
+        <div class="card skill">
 
-            <h3>Python</h3>
+            <div class="skill-icon">
+                🎮
+            </div>
 
-            <p>
-                Currently learning Python and exploring
-                programming beyond the browser.
-            </p>
+            <div>
+                <h3>Gaming</h3>
+
+                <p>
+                    Roblox is one of the games I enjoy
+                    playing when I have free time.
+                </p>
+            </div>
+
         </div>
 
 
-        <div class="card skill-card">
-            <div class="skill-icon">📱</div>
+        <div class="card skill">
 
-            <h3>Android</h3>
+            <div class="skill-icon">
+                🧠
+            </div>
 
-            <p>
-                Experimenting with Kotlin and Android
-                development through personal projects.
-            </p>
+            <div>
+                <h3>Problem Solving</h3>
+
+                <p>
+                    I enjoy figuring things out and finding
+                    solutions when something doesn't make sense.
+                </p>
+            </div>
+
         </div>
 
 
-        <div class="card skill-card">
-            <div class="skill-icon">🧠</div>
+        <div class="card skill">
 
-            <h3>Problem Solving</h3>
+            <div class="skill-icon">
+                🌙
+            </div>
 
-            <p>
-                I like taking an idea, breaking it into
-                smaller problems, and figuring it out.
-            </p>
+            <div>
+                <h3>Night Vibes</h3>
+
+                <p>
+                    Night is easily my favorite time of day.
+                    Everything just feels calmer.
+                </p>
+            </div>
+
         </div>
 
 
-        <div class="card skill-card">
-            <div class="skill-icon">⚙️</div>
+        <div class="card skill">
 
-            <h3>Experimentation</h3>
+            <div class="skill-icon">
+                ✈️
+            </div>
 
-            <p>
-                I learn a lot by building random ideas,
-                breaking them, and fixing them again.
-            </p>
+            <div>
+                <h3>Travel</h3>
+
+                <p>
+                    One of my goals is to travel outside
+                    Pakistan and experience new places.
+                </p>
+            </div>
+
         </div>
 
     </div>
@@ -850,252 +861,109 @@ footer{
     </div>
 
     <h2>
-        Things I've built.
+        Things I'm into.
     </h2>
+
+    <p style="max-width:600px;margin-bottom:35px;">
+        A few personal projects and creative things
+        that represent my interests.
+    </p>
+
 
     <div class="projects-grid">
 
 
-        <!-- PROJECT 01 -->
-
         <div class="card project">
 
-            <div>
-
-                <div class="project-top">
-                    <span class="project-number">01</span>
-                    <span>🔥</span>
-                </div>
-
-                <h3>
-                    Firebase Registration System
-                </h3>
-
-                <p>
-                    A registration system backed by Firebase
-                    Realtime Database, with registration handling
-                    and a separate admin panel for managing submissions.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Firebase</span>
-                    <span class="tag">RTDB</span>
-                </div>
-
+            <div class="project-number">
+                PROJECT 01
             </div>
 
-            <div class="project-links">
-                <a href="#" class="project-btn">
-                    Live Demo ↗
-                </a>
+            <h3>
+                Photography Collection
+            </h3>
 
-                <a href="#" class="project-btn">
-                    Source ↗
-                </a>
-            </div>
+            <p>
+                A personal collection of photographs,
+                everyday moments, places and things
+                that I find interesting.
+            </p>
+
+            <span class="project-tag">
+                Photography
+            </span>
 
         </div>
 
 
-        <!-- PROJECT 02 -->
-
         <div class="card project">
 
-            <div>
-
-                <div class="project-top">
-                    <span class="project-number">02</span>
-                    <span>🔐</span>
-                </div>
-
-                <h3>
-                    Cipher Web App
-                </h3>
-
-                <p>
-                    A custom encryption and decryption interface
-                    where I experimented with my own date-based
-                    cipher system and a clean web interface.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Encryption</span>
-                </div>
-
+            <div class="project-number">
+                PROJECT 02
             </div>
 
-            <div class="project-links">
-                <a href="#" class="project-btn">
-                    Live Demo ↗
-                </a>
+            <h3>
+                Roblox World
+            </h3>
 
-                <a href="#" class="project-btn">
-                    Source ↗
-                </a>
-            </div>
+            <p>
+                Exploring Roblox, trying different games,
+                experimenting with ideas and creating
+                my own little gaming experiences.
+            </p>
+
+            <span class="project-tag">
+                Gaming
+            </span>
 
         </div>
 
 
-        <!-- PROJECT 03 -->
-
         <div class="card project">
 
-            <div>
-
-                <div class="project-top">
-                    <span class="project-number">03</span>
-                    <span>💬</span>
-                </div>
-
-                <h3>
-                    Firebase Chat
-                </h3>
-
-                <p>
-                    An experimental real-time chat concept using
-                    Google authentication and Firebase Realtime
-                    Database, with private and public conversations.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Firebase</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Authentication</span>
-                    <span class="tag">Realtime DB</span>
-                </div>
-
+            <div class="project-number">
+                PROJECT 03
             </div>
 
-            <div class="project-links">
-                <a href="#" class="project-btn">
-                    Live Demo ↗
-                </a>
+            <h3>
+                Basketball Journey
+            </h3>
 
-                <a href="#" class="project-btn">
-                    Source ↗
-                </a>
-            </div>
+            <p>
+                Improving my basketball skills, learning
+                more about the game and following the
+                sport I enjoy.
+            </p>
+
+            <span class="project-tag">
+                Sports
+            </span>
 
         </div>
 
 
-        <!-- PROJECT 04 -->
-
         <div class="card project">
 
-            <div>
-
-                <div class="project-top">
-                    <span class="project-number">04</span>
-                    <span>▶️</span>
-                </div>
-
-                <h3>
-                    YouTube Ad-Speed Extension
-                </h3>
-
-                <p>
-                    A browser extension experiment designed to
-                    detect advertisements and temporarily change
-                    playback speed during the ad period.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Chrome Extension</span>
-                    <span class="tag">DOM</span>
-                </div>
-
+            <div class="project-number">
+                PROJECT 04
             </div>
 
-            <div class="project-links">
-                <a href="#" class="project-btn">
-                    Demo ↗
-                </a>
+            <h3>
+                Future Ideas
+            </h3>
 
-                <a href="#" class="project-btn">
-                    Source ↗
-                </a>
-            </div>
+            <p>
+                There are always new things I want to try.
+                This space is for the ideas and projects
+                that come next.
+            </p>
+
+            <span class="project-tag">
+                Coming Soon
+            </span>
 
         </div>
 
-
-        <!-- PROJECT 05 -->
-
-        <div class="card project">
-
-            <div>
-
-                <div class="project-top">
-                    <span class="project-number">05</span>
-                    <span>💻</span>
-                </div>
-
-                <h3>
-                    Personal Experiments
-                </h3>
-
-                <p>
-                    A collection of small websites, UI experiments,
-                    JavaScript ideas and random projects I build
-                    while learning.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                </div>
-
-            </div>
-
-            <div class="project-links">
-                <a href="#" class="project-btn">
-                    Explore ↗
-                </a>
-            </div>
-
-        </div>
-
-
-        <!-- PROJECT 06 -->
-
-        <div class="card project">
-
-            <div>
-
-                <div class="project-top">
-                    <span class="project-number">06</span>
-                    <span>🧪</span>
-                </div>
-
-                <h3>
-                    More Coming Soon
-                </h3>
-
-                <p>
-                    I'm still learning, experimenting and building.
-                    This section is going to keep growing as I
-                    turn more ideas into actual projects.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Learning</span>
-                    <span class="tag">Building</span>
-                    <span class="tag">Experimenting</span>
-                </div>
-
-            </div>
-
-        </div>
 
     </div>
 
@@ -1104,80 +972,37 @@ footer{
 </section>
 
 
-<!-- CURRENTLY -->
+<!-- HOBBIES -->
 
-<section id="currently">
+<section id="hobbies">
 
 <div class="container">
 
     <div class="section-label">
-        04 / Currently
+        04 / Hobbies
     </div>
 
     <h2>
-        What I'm up to.
+        When I'm not studying.
     </h2>
 
-    <div class="current-grid">
+    <div class="hobbies">
 
-        <div class="card">
+        <div class="hobby">🏀 Basketball</div>
 
-            <h3>
-                Currently learning
-            </h3>
+        <div class="hobby">📸 Taking Pictures</div>
 
-            <p style="margin-top:10px;">
-                I'm trying to move beyond just following tutorials
-                and actually understand how the things I build work.
-            </p>
+        <div class="hobby">🎮 Roblox</div>
 
-            <div class="learning-list">
+        <div class="hobby">🎧 Listening to Music</div>
 
-                <div class="learning">
-                    <strong>Python</strong>
-                    <span>Learning</span>
-                </div>
+        <div class="hobby">📱 Instagram</div>
 
-                <div class="learning">
-                    <strong>JavaScript</strong>
-                    <span>Improving</span>
-                </div>
+        <div class="hobby">⚽ Football</div>
 
-                <div class="learning">
-                    <strong>Android / Kotlin</strong>
-                    <span>Exploring</span>
-                </div>
+        <div class="hobby">🌙 Staying Up Late</div>
 
-                <div class="learning">
-                    <strong>Data & Technology</strong>
-                    <span>Exploring</span>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>
-                My approach
-            </h3>
-
-            <p style="margin-top:15px;">
-                I learn best by building.
-                If I have an idea, I'd rather try making it,
-                run into 17 errors 😭, fix them, and understand
-                what actually happened.
-            </p>
-
-            <p style="margin-top:15px;">
-                The goal isn't to know everything.
-                It's to keep getting better at turning ideas
-                into working things.
-            </p>
-
-        </div>
+        <div class="hobby">✈️ Travelling</div>
 
     </div>
 
@@ -1193,23 +1018,24 @@ footer{
 <div class="container">
 
     <div class="section-label">
-        05 / Favorite Song
+        05 / My Soundtrack
     </div>
 
     <h2>
-        What's on repeat.
+        Music I love.
     </h2>
+
 
     <div class="card music-card">
 
         <div class="album" id="album"></div>
 
         <h3>
-            Let Down
+            Reflections
         </h3>
 
         <p>
-            Radiohead
+            The Neighbourhood
         </p>
 
         <button onclick="toggleMusic()">
@@ -1223,44 +1049,201 @@ footer{
 </section>
 
 
-<!-- CONTACT -->
+<!-- PERSONALITY -->
 
-<section class="contact" id="contact">
+<section>
+
+<div class="container">
 
     <div class="section-label">
-        06 / Contact
+        06 / A Little More About Me
     </div>
 
     <h2>
-        Let's build something.
+        My vibe.
     </h2>
 
-    <p>
-        I'm always interested in interesting ideas,
-        projects and things worth experimenting with.
-    </p>
+    <div class="personality-grid">
 
-    <div class="contact-links">
+        <div class="card personality">
 
-        <a href="#" class="contact-link">
-            GitHub ↗
-        </a>
+            <div class="personality-icon">
+                😭
+            </div>
 
-        <a href="#" class="contact-link">
-            Instagram ↗
-        </a>
+            <h3>
+                Humor
+            </h3>
 
-        <a href="mailto:your@email.com" class="contact-link">
-            Email ↗
+            <p>
+                Sarcasm, random jokes and messing around
+                are definitely part of my personality.
+            </p>
+
+        </div>
+
+
+        <div class="card personality">
+
+            <div class="personality-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Competitive
+            </h3>
+
+            <p>
+                I like winning and I definitely don't
+                enjoy losing.
+            </p>
+
+        </div>
+
+
+        <div class="card personality">
+
+            <div class="personality-icon">
+                🧠
+            </div>
+
+            <h3>
+                Curious
+            </h3>
+
+            <p>
+                I like figuring things out and understanding
+                how things work.
+            </p>
+
+        </div>
+
+
+        <div class="card personality">
+
+            <div class="personality-icon">
+                🌙
+            </div>
+
+            <h3>
+                Night Person
+            </h3>
+
+            <p>
+                Give me nighttime over early mornings
+                any day.
+            </p>
+
+        </div>
+
+
+        <div class="card personality">
+
+            <div class="personality-icon">
+                🖤
+            </div>
+
+            <h3>
+                Simple
+            </h3>
+
+            <p>
+                I like keeping things comfortable,
+                simple and genuine.
+            </p>
+
+        </div>
+
+
+        <div class="card personality">
+
+            <div class="personality-icon">
+                ✨
+            </div>
+
+            <h3>
+                Always Exploring
+            </h3>
+
+            <p>
+                There's always something new I want to
+                experience or learn.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+    <div class="section-label">
+        07 / Contact
+    </div>
+
+    <div class="card contact">
+
+        <h2>
+            Let's connect.
+        </h2>
+
+        <p>
+            Want to talk, share something, or just say hi?
+            You can find me on Instagram.
+        </p>
+
+        <a class="contact-button"
+           href="#"
+           onclick="alert('Add your Instagram link here!')">
+            Instagram →
         </a>
 
     </div>
+
+</div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section class="final">
+
+    <div class="heart">
+        🖤
+    </div>
+
+    <div class="section-label">
+        End of the portfolio
+    </div>
+
+    <h2>
+        This is only the beginning.
+    </h2>
+
+    <p class="final-message">
+        I'm still figuring things out, trying new things,
+        meeting new people and making memories along
+        the way.
+    </p>
+
+    <p style="margin-top:35px;">
+        Zimal · Zee · Imli · Zebra
+    </p>
 
 </section>
 
 
 <footer>
-    © 2026 Muhammad Abdullah · Built with HTML, CSS & JavaScript
+    Designed & developed by Muhammad Abdullah · Zimal Edition
 </footer>
 
 
@@ -1292,12 +1275,8 @@ for(let i = 0; i < 45; i++){
     particleContainer.appendChild(p);
 }
 
-</script>
 
-
-<!-- MUSIC -->
-
-<script>
+/* ---------- MUSIC ---------- */
 
 function toggleMusic(){
 
@@ -1330,7 +1309,7 @@ function toggleMusic(){
 
 <audio
     id="bgMusic"
-    src="Let-Down.mp3"
+    src="Reflection.mp3"
     preload="auto">
 </audio>
 
